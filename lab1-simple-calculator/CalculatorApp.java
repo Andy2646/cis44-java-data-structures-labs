@@ -21,13 +21,13 @@ public class CalculatorApp {
             }
 
             if (input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/") || input.equals("=")) {
-                calculator.enterOperator(input);
-                System.out.println(calculator.getDisplayValue());
+                calculator.setOperator(input);
+                System.out.println(calculator.printDisplay());
             } else {
                 try {
                     double number = Double.parseDouble(input);
-                    calculator.enterNumber(number);
-                    System.out.println(calculator.getDisplayValue());
+                    calculator.setNumber(number);
+                    System.out.println(calculator.printDisplay());
                 } catch (NumberFormatException e) {
                     System.out.println("Invalid input. Please enter a number, operator, or 'exit'.");
                 }
