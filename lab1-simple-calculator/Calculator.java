@@ -2,24 +2,24 @@ public class Calculator {
     private double currentResult;
     private double currentInput;
     private String pendingOperator;
-    private boolean isStartOfNewCalculation;
+    private boolean newCalculation;
 
     public Calculator() {
         this.currentResult = 0.0;
         this.currentInput = 0.0;
         this.pendingOperator = "=";
-        this.isStartOfNewCalculation = true;
+        this.newCalculation = true;
     }
 
-    public void enterNumber(double number) {
+    public void setNumber(double number) {
         this.currentInput = number;
-        if (isStartOfNewCalculation) {
+        if (newCalculation) {
             this.currentResult = number;
-            this.isStartOfNewCalculation = false;
+            this.newCalculation = false;
         }
     }
 
-    public void enterOperator(String operator) {
+    public void setOperator(String operator) {
         switch (pendingOperator) {
             case "+":
                 this.currentResult += this.currentInput;
@@ -36,21 +36,21 @@ public class Calculator {
                     this.currentResult = 0.0;
                     this.currentInput = 0.0;
                     this.pendingOperator = "=";
-                    this.isStartOfNewCalculation = true;
+                    this.newCalculation = true;
                     break;
                 }
                 this.currentResult /= this.currentInput;
                 break;
         }
         if (operator.equals("=")) {
-            this.isStartOfNewCalculation = true;
+            this.newCalculation = true;
         }
         this.pendingOperator = operator;
 
     }
 
-    public double getDisplayValue() {
-        if (this.pendingOperator.equals("=") && this.isStartOfNewCalculation)
+    public double printDisplay() {
+        if (this.pendingOperator.equals("=") && this.newCalculation)
             return this.currentResult;
         else
             return this.currentInput;
