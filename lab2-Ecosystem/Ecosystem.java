@@ -135,13 +135,13 @@ public class Ecosystem {
                     // Move Right
                     case 2 -> {
                         if ((i + 1) < river.length) {
-                            // Check if bear collides with fish
+                            // Check if fish collides with bear
                             if (newRiver[i+1] instanceof Bear) {
                                 newRiver[i] = null;
                             }
-                            // Check if bear collides with bear
+                            // Check if fish collides with fish
                             else if (newRiver[i+1] instanceof Fish) {
-                                // Randomly spawn a bear
+                                // Randomly spawn a fish
                                 boolean spawned = false;
 
                                 do {
@@ -184,7 +184,7 @@ public class Ecosystem {
     }
 
     public static void main(String[] args) {
-        Ecosystem eco = new Ecosystem(25); // Create a river of size 20
+        Ecosystem eco = new Ecosystem(25); // Create a river of size 25
         eco.visualize();
 
         for (int i = 1; i <= 10; i++) {
